@@ -6,7 +6,6 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 
 import { WiseAuthInterceptor } from '../providers/wiseauth.interceptor';
@@ -26,7 +25,6 @@ import { BaseHttp } from '../providers/basehttp';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage,
     LoginPage,
     RegisterPage,
   ],
@@ -34,7 +32,9 @@ import { BaseHttp } from '../providers/basehttp';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      menuType: 'overlay'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,7 +42,6 @@ import { BaseHttp } from '../providers/basehttp';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage,
     LoginPage,
     RegisterPage,
   ],

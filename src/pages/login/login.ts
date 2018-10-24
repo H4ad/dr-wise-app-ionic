@@ -2,7 +2,7 @@
 
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { TabsPage } from '../../pages/tabs/tabs';
+import { HomePage } from '../../pages/home/home';
 import { RegisterPage } from '../../pages/register/register';
 import { AuthProvider, LoginPayload } from "../../providers/auth/auth";
 
@@ -48,7 +48,7 @@ export class LoginPage {
     if(accessToken == null)
       return;
 
-    this.nav.push(TabsPage);
+    this.nav.push(HomePage);
   }
 
   //#endregion
@@ -89,7 +89,7 @@ export class LoginPage {
       response  => {
         localStorage.setItem(this.LOGIN_ACCESS_KEY, response.access_token);
 
-        this.nav.push(TabsPage);
+        this.nav.push(HomePage);
       },
       error => {
         alert(error.message);
