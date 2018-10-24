@@ -69,7 +69,7 @@ export class RegisterPage {
 
   //#endregion
 
-  //#region Functions
+  //#region Methods
 
   /**
    * Função que redireciona o usuário para a página de login
