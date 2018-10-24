@@ -1,7 +1,13 @@
+//#region Imports
+
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { AuthProvider, RegisterPayload } from '../../providers/auth/auth';
+
+//#endregion
+
+//#region Componentes
 
 /**
  * Generated class for the RegisterPage page.
@@ -15,6 +21,10 @@ import { AuthProvider, RegisterPayload } from '../../providers/auth/auth';
   templateUrl: 'register.html',
 })
 
+//#endregion
+
+//#region Class
+
 /**
  * Classe que lida com o registro de usuários
  */
@@ -24,28 +34,15 @@ export class RegisterPage {
 
   /**
    * Construtor padrão
-   * 
-   * @param navCtrl Componente da navegação
-   * @param authProvider Provider que auxilia com a autenticação
+   *
+   * @param nav Componente da navegação
+   * @param auth Provider que auxilia com a autenticação
    */
-  constructor(public navCtrl: NavController, public authProvider: AuthProvider) {
-    this.nav = navCtrl;
-    this.auth = this.authProvider;
-  }
-  
+  constructor(public nav: NavController, public auth: AuthProvider) {}
+
   //#endregion
 
   //#region Properties
-
-  /**
-   * Usado para navegar no aplicativo
-   */
-  private nav: NavController;
-
-  /**
-   * Provider que auxilia com a autenticação
-   */
-  private auth: AuthProvider;
 
   /**
    * Nome do usuário
@@ -82,16 +79,15 @@ export class RegisterPage {
    * Função que realiza o registro do usuário
    */
   doRegister(): void {
-    let registerData = <RegisterPayload> { 
+    let registerData = <RegisterPayload> {
       name: this.name,
       email: this.email,
       password: this.password,
       password_confirmation: this.password_confirmation
     };
 
-    this.auth.makeRegister(registerData, 
+    this.auth.makeRegister(registerData,
     response => {
-      alert(response.message);
       this.goToLogin();
     },
     error => {
@@ -101,3 +97,5 @@ export class RegisterPage {
 
   //#endregion
 }
+
+//#endregion

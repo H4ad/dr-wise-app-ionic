@@ -1,8 +1,14 @@
+//#region Imports
+
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { TabsPage } from '../../pages/tabs/tabs';
 import { RegisterPage } from '../../pages/register/register';
 import { AuthProvider, LoginPayload } from "../../providers/auth/auth";
+
+//#endregion
+
+//#region Componentes
 
 /**
  * Generated class for the LoginPage page.
@@ -19,18 +25,43 @@ import { AuthProvider, LoginPayload } from "../../providers/auth/auth";
   ]
 })
 
+//#endregion
+
+//#region Class
+
 /**
  * Classe que lida com a lógica da página de Login
  */
 export class LoginPage {
 
-  /**
-   * Usado para navegar no aplicativo
-   */
-  private nav: NavController;
+  //#region Construtor
 
   /**
-   * Nome do usuário
+   * Construtor padrão
+   *
+   * @param nav Componente de navegação
+   */
+  constructor(public nav: NavController, public auth: AuthProvider)
+  {
+    let accessToken = localStorage.getItem(this.LOGIN_ACCESS_KEY);
+
+    if(accessToken == null)
+      return;
+
+    this.nav.push(TabsPage);
+  }
+
+  //#endregion
+
+  //#region Properties
+
+  /**
+   * Key usada para armazenar o token de acesso
+   */
+  private readonly LOGIN_ACCESS_KEY: string = "LOGIN_ACCESS_KEY";
+
+  /**
+   * E-mail do usuário
    */
   public email: string;
 
@@ -39,39 +70,27 @@ export class LoginPage {
    */
   public password: string;
 
-  /**
-   * Provider para realizar chamadas na api
-   */
-  private authProvider: AuthProvider;
+  //#endregion
 
-  /**
-   * Construtor padrão
-   * 
-   * @param nav Componente de navegação
-   */
-  constructor(nav: NavController, auth: AuthProvider) 
-  {
-    this.nav = nav;
-    this.authProvider = auth;
-  }
+  //#region Methods
 
   /**
    * Realiza a ação de logar
    */
   doLogin(): void {
-    
-    let loginPayload = <LoginPayload> 
+
+    let loginPayload = <LoginPayload>
     {
-       email: this.email, 
-       password: this.password  
+       email: this.email,
+       password: this.password
     };
 
-    this.authProvider.makeLogin(loginPayload, 
+    this.auth.makeLogin(loginPayload,
       response  => {
-        // TODO: Armazenar o token de acesso
+        localStorage.setItem(this.LOGIN_ACCESS_KEY, response.access_token);
 
         this.nav.push(TabsPage);
-      }, 
+      },
       error => {
         alert(error.message);
       }
@@ -84,4 +103,9 @@ export class LoginPage {
   goToRegister(): void {
     this.nav.push(RegisterPage);
   }
+
+  //#endregion
+
 }
+
+//#endregion

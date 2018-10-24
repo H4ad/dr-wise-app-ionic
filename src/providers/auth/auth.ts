@@ -1,5 +1,11 @@
+//#region Imports
+
 import { Injectable } from '@angular/core';
 import { BaseHttp, ErrorProxy } from '../basehttp';
+
+//#endregion
+
+//#region Class
 
 /**
  * Provider que lidará com autenticação do aplicativo
@@ -7,23 +13,24 @@ import { BaseHttp, ErrorProxy } from '../basehttp';
 @Injectable()
 export class AuthProvider {
 
-  /**
-   * Url base para realizar as chamadas
-   */
-  private readonly baseUrl: string = "https://wiseonesoft.com/api/";
+  //#region Construtor
 
   /**
    * Construtor padrão
-   * 
-   * @param http Modulo HTTP 
+   *
+   * @param http Modulo HTTP
    */
   constructor(public http: BaseHttp) {
     console.log('AuthProvider initialized!');
   }
 
+  //#endregion
+
+  //#region Methods
+
   /**
    * Realiza o login do usuário
-   * 
+   *
    * @param loginPayload Informações de login
    * @param handleSuccesfull Função executada ao obter um status code de sucesso
    * @param handleError Função executada ao obter um status code de erro
@@ -38,7 +45,12 @@ export class AuthProvider {
   makeRegister(registerPayload: RegisterPayload, handleSuccesfull: (response: DefaultProxy) => void, handleError: (response: ErrorProxy) => void): void {
     this.http.post<DefaultProxy>('auth/signup', registerPayload, handleSuccesfull, handleError);
   }
+
+  //#endregion
+
 }
+
+//#endregion
 
 //#region Payloads
 
@@ -64,7 +76,7 @@ export interface LoginPayload {
   password: string;
 
   /**
-   * Indica se é para lembrar do usuário (Sinceramente não sei o que muda) 
+   * Indica se é para lembrar do usuário (Sinceramente não sei o que muda)
    */
   remember_me: boolean;
 
