@@ -1,0 +1,71 @@
+<!--
+  Generated template for the RegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registrar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid class="vertical-align">
+
+    <form>
+      <ion-row justify-content-center padding-bottom>
+
+        <ion-col ion-row>
+
+            <ion-item>
+              <ion-label text-center stacked class="large-text">Nome</ion-label>
+              <ion-input text-center type="text" [(ngModel)]="name" name="name" placeholder="Digite o seu nome"></ion-input>
+            </ion-item>
+  
+          <ion-item>
+            <ion-label text-center stacked class="large-text">E-mail</ion-label>
+            <ion-input text-center type="text" [(ngModel)]="email" name="user.email" placeholder="Digite o seu nome de usuário"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label text-center stacked class="large-text">Senha</ion-label>
+            <ion-input text-center type="password" [(ngModel)]="password" name="password" placeholder="Digite a sua senha"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label text-center stacked class="large-text">Confirmação da senha</ion-label>
+            <ion-input text-center type="password" [(ngModel)]="password_confirmation" name="password_confirmation" placeholder="Digite novamente a sua senha"></ion-input>
+          </ion-item>
+
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row>
+
+        <ion-col text-center no-padding>
+          <ion-note no-padding>Já possui conta ?</ion-note>
+          <ion-note (click)="goToLogin()" color="primary" no-padding>Entre!</ion-note>
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row>
+
+        <ion-col no-padding>
+          <div text-center padding-left padding-right>
+            <button ion-button outline round block (click)="doRegister()">Registrar-se</button>
+          </div>
+        </ion-col>
+
+      </ion-row>
+
+    </form>
+
+  </ion-grid>
+
+</ion-content>
