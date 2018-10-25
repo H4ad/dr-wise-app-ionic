@@ -21,6 +21,15 @@ import { NavController, MenuController } from 'ionic-angular';
  */
 export class HomePage {
 
+  //#region Properties
+
+  /**
+   * Representa os cards que serão exibidos na home
+   */
+  public cards: Array<object>;
+
+  //#endregion
+
   //#region Construtor
 
   /**
@@ -31,6 +40,33 @@ export class HomePage {
    */
   constructor(public nav: NavController, public menu: MenuController) {
     menu.enable(true, "menu1");
+
+    this.cards =
+    [
+      {
+        type: "emptySchedule"
+      },
+      {
+        type: "emptySchedule"
+      },
+      {
+        type: "emptySchedule"
+      }
+    ];
+  }
+
+  //#endregion
+
+  //#region Methods
+
+  /**
+   * Remove um elemento da lista de cards
+   *
+   * @param index Posição do card
+   */
+  removeCardFromList(index: number): void {
+    console.log(index);
+    this.cards.splice(index, 1);
   }
 
   //#endregion

@@ -1,15 +1,18 @@
 <ion-card>
   <ion-card-header text-center text-wrap>
-    Você não possui nenhum horário agendado
+    Você não possui nenhuma consulta agendada
   </ion-card-header>
   <ion-card-content>
     <ion-grid>
-      <ion-row text-wrap>
-        Caso haja interesse em agendar um horário com alguma clinica, clique no botão abaixo:
+      <ion-row text-wrap text-justify>
+        Caso haja interesse em marcar uma consulta em alguma de nossas clinicas, clique no botão abaixo.
       </ion-row>
       <ion-row>
         <ion-col text-center margin-top>
-          <button ion-button outline round>Horário</button>
+          <button (click)="closeCard()" ion-button outline round color="danger">Fechar</button>
+        </ion-col>
+        <ion-col text-center margin-top>
+          <button ion-button outline round>Consultas</button>
         </ion-col>
       </ion-row>
     </ion-grid>
