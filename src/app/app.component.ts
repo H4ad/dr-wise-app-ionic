@@ -91,4 +91,20 @@ export class MyApp {
 
 }
 
+/**
+ * Classe que armazena as keys do localStorage
+ */
+export class Keys {
+
+  //#region Constants
+
+  /**
+   * Key do token de acesso
+   */
+  public static readonly LOGIN_ACCESS_KEY: string = "LOGIN_ACCESS_KEY";
+
+  //#endregion
+
+}
+
 //#endregion

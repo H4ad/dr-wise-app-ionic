@@ -5,6 +5,7 @@ import { NavController } from 'ionic-angular';
 import { HomePage } from '../../pages/home/home';
 import { RegisterPage } from '../../pages/register/register';
 import { AuthProvider, LoginPayload } from "../../providers/auth/auth";
+import { Keys } from '../../app/app.component';
 
 //#endregion
 
@@ -43,7 +44,7 @@ export class LoginPage {
    */
   constructor(public nav: NavController, public auth: AuthProvider)
   {
-    let accessToken = localStorage.getItem(this.LOGIN_ACCESS_KEY);
+    let accessToken = localStorage.getItem(Keys.LOGIN_ACCESS_KEY);
 
     if(accessToken == null)
       return;
@@ -54,11 +55,6 @@ export class LoginPage {
   //#endregion
 
   //#region Properties
-
-  /**
-   * Key usada para armazenar o token de acesso
-   */
-  private readonly LOGIN_ACCESS_KEY: string = "LOGIN_ACCESS_KEY";
 
   /**
    * E-mail do usuário
@@ -87,7 +83,7 @@ export class LoginPage {
 
     this.auth.makeLogin(loginPayload,
       response  => {
-        localStorage.setItem(this.LOGIN_ACCESS_KEY, response.access_token);
+        localStorage.setItem(Keys.LOGIN_ACCESS_KEY, response.access_token);
 
         this.nav.push(HomePage);
       },
