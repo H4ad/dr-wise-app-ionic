@@ -2,6 +2,7 @@
 
 import { Component, Output, EventEmitter } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 //#endregion
 
@@ -15,7 +16,22 @@ import { NavController } from 'ionic-angular';
  */
 @Component({
   selector: 'empty-schedule-card',
-  templateUrl: 'empty-schedule-card.html'
+  templateUrl: 'empty-schedule-card.html',
+  animations: [
+    trigger('openClose', [
+      // ...
+      state('open', style({
+        opacity: 1,
+      })),
+      state('closed', style({
+        height: '0px',
+        opacity: 0,
+      })),
+      transition('open => closed', [
+        animate('0.6s')
+      ]),
+    ]),
+  ],
 })
 
 //#endregion
@@ -39,6 +55,11 @@ export class EmptyScheduleCardComponent {
   //#region Properties
 
   /**
+   * Fecha o card de forma animada
+   */
+  public isOpen: boolean = true;
+
+  /**
    * Usado para executar o método passado do pai
    */
   @Output() onSelection: EventEmitter<any> = new EventEmitter();
@@ -60,7 +81,11 @@ export class EmptyScheduleCardComponent {
    * Fecha este card
    */
   closeCard(): void {
-    this.onSelection.next();
+    this.isOpen = false;
+
+    setTimeout(() => {
+      this.onSelection.next();
+    }, 600);
   }
 
   /**
