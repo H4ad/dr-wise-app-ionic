@@ -7,12 +7,10 @@
       <ion-row text-wrap text-justify>
         Caso haja interesse em marcar uma consulta em alguma de nossas clinicas, clique no botão abaixo.
       </ion-row>
-      <ion-row>
-        <ion-col text-center margin-top>
+      <ion-row margin-top>
+        <ion-col text-center>
           <button (click)="closeCard()" ion-button outline round color="danger">Fechar</button>
-        </ion-col>
-        <ion-col text-center margin-top>
-          <button ion-button outline round>Consultas</button>
+          <button (click)="showSchedules()" ion-button outline round>Consultas</button>
         </ion-col>
       </ion-row>
     </ion-grid>

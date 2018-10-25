@@ -66,11 +66,12 @@ export class EmptyScheduleCardComponent {
   /**
    * Exibe a página de consultas
    */
-  showSchedules(index: string): void {
+  showSchedules(): void {
     //TODO: Criar e implementar navegação para a página de consultas
   }
 
   //#endregion
+
 }
 
 //#endregion

@@ -46,12 +46,6 @@ export class HomePage {
       {
         type: "emptySchedule"
       },
-      {
-        type: "emptySchedule"
-      },
-      {
-        type: "emptySchedule"
-      }
     ];
   }
 
@@ -65,7 +59,6 @@ export class HomePage {
    * @param index Posição do card
    */
   removeCardFromList(index: number): void {
-    console.log(index);
     this.cards.splice(index, 1);
   }
 
