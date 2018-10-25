@@ -3,7 +3,7 @@
   </main-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <div *ngFor="let card of cards; let i = index">
     <div *ngIf="card.type == 'emptySchedule'">
       <empty-schedule-card (onSelection)="removeCardFromList(i)"></empty-schedule-card>
