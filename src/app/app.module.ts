@@ -18,6 +18,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { FormsModule } from "@angular/forms";
 import { RegisterPage } from '../pages/register/register';
 import { BaseHttp } from '../providers/basehttp';
+import { MainToolbarComponent } from '../components/main-toolbar/main-toolbar';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { BaseHttp } from '../providers/basehttp';
     HomePage,
     LoginPage,
     RegisterPage,
+    MainToolbarComponent
   ],
   imports: [
     BrowserModule,
