@@ -62,7 +62,7 @@ export class EmptyScheduleCardComponent {
   /**
    * Usado para executar o método passado do pai
    */
-  @Output() onSelection: EventEmitter<any> = new EventEmitter();
+  @Output() onCloseClick: EventEmitter<any> = new EventEmitter();
 
   //#endregion
 
@@ -74,7 +74,7 @@ export class EmptyScheduleCardComponent {
    * @param item Função enviada do pai
    */
   onSelectListItem(item: any) {
-    this.onSelection.emit(item);
+    this.onCloseClick.emit(item);
   }
 
   /**
@@ -84,7 +84,7 @@ export class EmptyScheduleCardComponent {
     this.isOpen = false;
 
     setTimeout(() => {
-      this.onSelection.next();
+      this.onCloseClick.next();
     }, 600);
   }
 
