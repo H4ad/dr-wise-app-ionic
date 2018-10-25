@@ -8,6 +8,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
+import { HomePage } from '../pages/home/home';
 
 //#endregion
 
@@ -75,6 +76,10 @@ export class MyApp {
     this.menu.close('mainMenu');
 
     switch (page) {
+
+      case 'home':
+        this.navCtrl.push(HomePage);
+        break;
 
       case 'profile':
         this.navCtrl.push(ProfilePage);

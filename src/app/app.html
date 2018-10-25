@@ -4,6 +4,7 @@
     <ion-list>
       <ion-item>
         <ion-row>
+
           <ion-col>
             <ion-avatar item-start>
               <img src="assets/imgs/logo.png">
@@ -12,6 +13,7 @@
             <h3>Essa fera aí</h3>
             <p>Você está <a color="secondary">online!</a></p>
           </ion-col>
+
           <ion-col col-auto>
 
             <ion-fab pull-3>
@@ -29,6 +31,10 @@
 
   <ion-content>
     <ion-list>
+
+      <ion-item (click)="openPageMenu('home')" text-center class="menu-list-item">
+        <label block outline large>Início</label>
+      </ion-item>
 
       <ion-item (click)="openPageMenu('profile')" text-center class="menu-list-item">
         <label block outline large>Perfil</label>
