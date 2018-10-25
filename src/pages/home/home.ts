@@ -39,7 +39,7 @@ export class HomePage {
    * @param menu Componente do menu
    */
   constructor(public nav: NavController, public menu: MenuController) {
-    menu.enable(true, "menu1");
+    menu.enable(true, "mainMenu");
 
     this.cards =
     [
