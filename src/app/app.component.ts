@@ -46,6 +46,11 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+
+      if(localStorage.getItem(Keys.LOGIN_ACCESS_KEY) == null)
+        this.navCtrl.push(LoginPage);
+      else
+        this.navCtrl.push(HomePage);
     });
   }
 
@@ -61,7 +66,7 @@ export class MyApp {
   /**
    * Página principal ao iniciar o aplicativo
    */
-  rootPage: any = LoginPage;
+  rootPage: any;
 
   //#endregion
 
@@ -83,6 +88,11 @@ export class MyApp {
 
       case 'profile':
         this.navCtrl.push(ProfilePage);
+        break;
+
+      case 'leave':
+        localStorage.clear();
+        this.navCtrl.setRoot(LoginPage);
         break;
     }
   }

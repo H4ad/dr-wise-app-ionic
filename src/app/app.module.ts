@@ -7,6 +7,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AuthProvider } from '../providers/auth/auth';
 import { WiseAuthInterceptor } from '../providers/wiseauth.interceptor';
@@ -31,6 +32,7 @@ import { ProfilePage } from '../pages/profile/profile';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     IonicModule.forRoot(MyApp, {

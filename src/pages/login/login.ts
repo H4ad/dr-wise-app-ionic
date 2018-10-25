@@ -1,7 +1,7 @@
 //#region Imports
 
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, IonicPage } from 'ionic-angular';
 import { HomePage } from '../../pages/home/home';
 import { RegisterPage } from '../../pages/register/register';
 import { AuthProvider, LoginPayload } from "../../providers/auth/auth";
@@ -42,15 +42,7 @@ export class LoginPage {
    *
    * @param nav Componente de navegação
    */
-  constructor(public nav: NavController, public auth: AuthProvider)
-  {
-    let accessToken = localStorage.getItem(Keys.LOGIN_ACCESS_KEY);
-
-    if(accessToken == null)
-      return;
-
-    this.nav.push(HomePage);
-  }
+  constructor(public nav: NavController, public auth: AuthProvider){}
 
   //#endregion
 
