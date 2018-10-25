@@ -19,6 +19,7 @@ import { FormsModule } from "@angular/forms";
 import { RegisterPage } from '../pages/register/register';
 import { BaseHttp } from '../providers/basehttp';
 import { MainToolbarComponent } from '../components/main-toolbar/main-toolbar';
+import { EmptyScheduleCardComponent } from '../components/empty-schedule-card/empty-schedule-card';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MainToolbarComponent } from '../components/main-toolbar/main-toolbar';
     HomePage,
     LoginPage,
     RegisterPage,
-    MainToolbarComponent
+    MainToolbarComponent,
+    EmptyScheduleCardComponent
   ],
   imports: [
     BrowserModule,

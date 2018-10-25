@@ -1,4 +1,10 @@
+//#region Imports
+
 import { Component,Input } from '@angular/core';
+
+//#endregion
+
+//#region Components
 
 /**
  * Generated class for the MainToolbarComponent component.
@@ -11,16 +17,36 @@ import { Component,Input } from '@angular/core';
   templateUrl: 'main-toolbar.html'
 })
 
+//#endregion
+
+//#region Class
+
 /**
  * Classe que representa o componente a barra e navegação
  */
 export class MainToolbarComponent {
 
-  @Input('itemsBadgeCount') dynamicItemsBadgeCount = "3";
-  public itemsBadgeCount: string = "3";
+  //#region Constructor
 
+  /**
+   * Construtor padrão
+   */
   constructor() {
     this.itemsBadgeCount = this.dynamicItemsBadgeCount;
   }
 
+  //#endregion
+
+  //#region Properties
+
+  /**
+   * Variáveis que dão bind com o número de notificações da toolbar
+   */
+  @Input('itemsBadgeCount') dynamicItemsBadgeCount = "3";
+  public itemsBadgeCount: string;
+
+  //#endregion
+
 }
+
+//#endregion

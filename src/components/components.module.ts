@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { MainToolbarComponent } from './main-toolbar/main-toolbar';
+import { EmptyScheduleCardComponent } from './empty-schedule-card/empty-schedule-card';
 @NgModule({
-	declarations: [MainToolbarComponent],
+	declarations: [MainToolbarComponent,
+    EmptyScheduleCardComponent],
 	imports: [],
-	exports: [MainToolbarComponent,]
+	exports: [MainToolbarComponent,
+    EmptyScheduleCardComponent]
 })
 export class ComponentsModule {}
