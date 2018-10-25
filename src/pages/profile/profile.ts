@@ -1,5 +1,11 @@
+//#region Imports
+
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
+//#endregion
+
+//#region Components
 
 /**
  * Generated class for the ProfilePage page.
@@ -13,13 +19,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-profile',
   templateUrl: 'profile.html',
 })
+
+//#endregion
+
+//#region Class
+
+/**
+ * Classe que lida com a página de perfil
+ */
 export class ProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  //#region Constructor
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
-  }
+  /**
+   * Construtor padrão
+   */
+  constructor() {}
+
+  //#endregion
 
 }
+
+//#endregion
