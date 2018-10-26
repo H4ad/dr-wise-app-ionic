@@ -1,11 +1,12 @@
 //#region Imports
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 import { HomePage } from '../../pages/home/home';
 import { RegisterPage } from '../../pages/register/register';
 import { AuthProvider, LoginPayload } from "../../providers/auth/auth";
 import { Keys } from '../../app/app.component';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 
 //#endregion
 
@@ -33,7 +34,7 @@ import { Keys } from '../../app/app.component';
 /**
  * Classe que lida com a lógica da página de Login
  */
-export class LoginPage {
+export class LoginPage implements OnInit  {
 
   //#region Construtor
 
@@ -57,6 +58,11 @@ export class LoginPage {
    * Senha do usuário
    */
   public password: string;
+
+  /**
+   * Formulário de login
+   */
+  public formLogin: FormGroup;
 
   //#endregion
 
@@ -90,6 +96,17 @@ export class LoginPage {
    */
   goToRegister(): void {
     this.nav.push(RegisterPage);
+  }
+
+  /**
+   * Executado ao iniciar a tela
+   */
+  ngOnInit() {
+    let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+    this.formLogin = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+    });
   }
 
   //#endregion

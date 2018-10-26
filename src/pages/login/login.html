@@ -17,18 +17,35 @@
 
   <ion-grid class="vertical-align">
 
-    <form>
+    <form novalidate (ngSubmit)="doLogin()" [formGroup]="formLogin">
       <ion-row justify-content-center padding-bottom>
 
         <ion-col ion-row>
           <ion-item>
             <ion-label text-center stacked class="large-text">E-mail</ion-label>
-            <ion-input text-center type="text" [(ngModel)]="email" name="email" placeholder="Digite o seu nome de usuário"></ion-input>
+            <ion-input text-center type="text" [(ngModel)]="email" formControlName="email" [class.error1]="!formLogin.controls.email.valid && formLogin.controls.email.dirty" placeholder="Digite o seu nome de usuário"></ion-input>
+          </ion-item>
+          <ion-item no-lines *ngIf="( formLogin.get('email').hasError('minlength') || formLogin.get('email').hasError('pattern') ||formLogin.get('email').hasError('required') ) && formLogin.get('email').touched">
+            <div class="error" *ngIf="formLogin.get('email').hasError('required') && formLogin.get('email').touched">
+              <ion-note>Este campo é necessário</ion-note>
+            </div>
+            <div class="error" *ngIf="formLogin.get('email').hasError('pattern') && formLogin.get('email').touched">
+              <ion-note>Endereço de e-mail inválido</ion-note>
+            </div>
           </ion-item>
 
           <ion-item>
             <ion-label text-center stacked class="large-text">Senha</ion-label>
-            <ion-input text-center type="password" [(ngModel)]="password" name="password" placeholder="Digite a sua senha"></ion-input>
+            <ion-input text-center type="password" [(ngModel)]="password" formControlName="password" [class.error1]="!formLogin.controls.password.valid && formLogin.controls.password.dirty" placeholder="Digite a sua senha"></ion-input>
+          </ion-item>
+
+          <ion-item no-lines *ngIf="(formLogin.get('password').hasError('minlength') ||formLogin.get('password').hasError('required') )">
+            <div class="error" *ngIf="formLogin.get('password').hasError('required') && formLogin.get('password').touched">
+              <ion-note>Este campo é necessário</ion-note>
+            </div>
+            <div class="error" *ngIf="formLogin.get('password').hasError('minlength') && formLogin.get('password').touched">
+              <ion-note>Este campo precisa ter no mínimo 6 caracteres</ion-note>
+            </div>
           </ion-item>
         </ion-col>
 
@@ -47,7 +64,7 @@
 
         <ion-col no-padding>
           <div text-center padding-left padding-right>
-            <button ion-button outline round block (click)="doLogin()">Entrar</button>
+            <button ion-button outline round block type="submit" [disabled]="formLogin.invalid">Entrar</button>
           </div>
         </ion-col>
 
