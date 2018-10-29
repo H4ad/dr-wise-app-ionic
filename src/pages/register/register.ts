@@ -1,7 +1,10 @@
 //#region Imports
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { NavController } from 'ionic-angular';
+
 import { LoginPage } from '../login/login';
 import { AuthProvider, RegisterPayload } from '../../providers/auth/auth';
 
@@ -28,7 +31,7 @@ import { AuthProvider, RegisterPayload } from '../../providers/auth/auth';
 /**
  * Classe que lida com o registro de usuários
  */
-export class RegisterPage {
+export class RegisterPage implements OnInit {
 
   //#region Constructor
 
@@ -64,6 +67,11 @@ export class RegisterPage {
    */
   public password_confirmation: string;
 
+  /**
+   * Formulário de login
+   */
+  public formRegister: FormGroup;
+
   //#endregion
 
   //#region Methods
@@ -92,6 +100,19 @@ export class RegisterPage {
     },
     error => {
       alert(error.message);
+    });
+  }
+
+  /**
+   * Executado ao iniciar a tela
+   */
+  ngOnInit() {
+    let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+    this.formRegister = new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
+      password_confirmation: new FormControl('', [Validators.required]),
     });
   }
 

@@ -6,7 +6,7 @@ import { HomePage } from '../../pages/home/home';
 import { RegisterPage } from '../../pages/register/register';
 import { AuthProvider, LoginPayload } from "../../providers/auth/auth";
 import { Keys } from '../../app/app.component';
-import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 //#endregion
 
