@@ -80,7 +80,7 @@ export class RegisterPage implements OnInit {
    * Função que redireciona o usuário para a página de login
    */
   goToLogin(): void {
-    this.nav.push(LoginPage);
+    this.nav.pop();
   }
 
   /**
