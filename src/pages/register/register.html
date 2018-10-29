@@ -30,7 +30,7 @@
               <ion-note>Este campo é necessário</ion-note>
             </div>
             <div class="error" *ngIf="formRegister.get('name').hasError('minlength') && formRegister.get('name').touched">
-              <ion-note>Este campo precisa ter no mínimo 6 caracteres</ion-note>
+              <ion-note>Este campo precisa ter no mínimo 3 caracteres</ion-note>
             </div>
           </ion-item>
 
@@ -67,9 +67,12 @@
             <ion-input text-center type="password" [(ngModel)]="password_confirmation" formControlName="password_confirmation" [class.error1]="!formRegister.controls.password_confirmation.valid && formRegister.controls.password_confirmation.dirty"
               placeholder="Digite novamente a sua senha"></ion-input>
           </ion-item>
-          <ion-item no-lines *ngIf="(formRegister.get('password_confirmation').hasError('minlength') || formRegister.get('password_confirmation').hasError('required') ) && formRegister.get('password_confirmation').touched">
+          <ion-item no-lines *ngIf="(formRegister.get('password_confirmation').hasError('minlength') || formRegister.get('password_confirmation').hasError('required') || formRegister.get('password_confirmation').hasError('equalTo')) && formRegister.get('password_confirmation').touched">
             <div class="error" *ngIf="formRegister.get('password_confirmation').hasError('required') && formRegister.get('password_confirmation').touched">
               <ion-note>Este campo é necessário</ion-note>
+            </div>
+            <div class="error" *ngIf="formRegister.get('password_confirmation').hasError('equalTo') && formRegister.get('password_confirmation').touched">
+              <ion-note>As senhas não combinam</ion-note>
             </div>
           </ion-item>
 

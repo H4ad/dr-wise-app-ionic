@@ -1,7 +1,7 @@
 //#region Imports
 
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {FormGroup, FormControl, Validators, AbstractControl, ValidatorFn} from '@angular/forms';
 
 import { NavController } from 'ionic-angular';
 
@@ -112,8 +112,19 @@ export class RegisterPage implements OnInit {
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)]),
       password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]),
-      password_confirmation: new FormControl('', [Validators.required]),
+      password_confirmation: new FormControl('', [Validators.required, this.equalToValidator('password')]),
     });
+  }
+
+  /**
+   * Faz validação para verificar se é igual ao campo passado por parametro
+   *
+   * @param field_name Nome do campo
+   */
+  equalToValidator(field_name: string): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } => {
+      return control.root.value[field_name] != control.value ? {'equalTo': true} : null;
+    };
   }
 
   //#endregion
